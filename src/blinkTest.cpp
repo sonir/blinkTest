@@ -82,3 +82,12 @@ bool blinkTest::theSpecialNodeExits(int index){
     
     
 }
+
+void blinkTest::resetSpecials(){
+    
+    for(int i=0; i<NODE_NUM; i++){
+
+        special_nords[i] = false;
+        
+    }
+}

@@ -10,11 +10,14 @@
 //#ifndef __sjqPlayer__Osc__
 //#define __sjqPlayer__Osc__
 
+
 #include <stdio.h>
 #include "slOscManager.h"
-#include "ofApp.h"
 #include "setup.h"
+#include "ofApp.h"
+
 class ofApp;
+
 
 class Osc : public slOscManager{
 
@@ -23,13 +26,12 @@ class Osc : public slOscManager{
         Osc(int port, ofApp *app_adr):slOscManager(port){
         
             ofapp = app_adr;
-            trg.inst = PF;
-            trg.note = POINT;
+//            trg.inst = PF;
+//            trg.note = POINT;
             
         }
 
         ofApp *ofapp;
-        note_event_t trg;
         void fireMessage(ofxOscMessage *m);
 
     

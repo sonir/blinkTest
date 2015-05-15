@@ -5,6 +5,8 @@ using namespace std;
 void ofApp::setup(){
 
     ofBackground(0, 0, 0);
+    osc = new Osc(PORT, this);
+    sender.setup("127.0.0.1" , 7400);
     app.setup();
     
     
@@ -23,6 +25,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    osc->update();
     app.update();
     
 }
@@ -79,7 +82,6 @@ void ofApp::keyPressed(int key){
         do{
             rnd_index = (int)ofRandom(NODE_NUM);
         }while(rnd_index==app.pre_rnd_index);
-        cout << rnd_index << endl;
         
         if(app.checkSpecial(rnd_index)){
 
@@ -157,7 +159,6 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 
 //-------------------------------------------------------------
-
 void ofApp::blinkAll(){
     
     for(int i=0; i<NODE_NUM;i++){
@@ -167,5 +168,17 @@ void ofApp::blinkAll(){
     }
     
     timer_blink_all = BLINK_SPD;
+    
+}
+
+//-------------------------------------------------------------
+void ofApp::setSpecials(specials_t sp){
+
+    app.resetSpecials();
+    for(int i=0; i<sp.node_num; i++){
+        
+        app.special_nords[sp.specials[i]] = true;
+        
+    }
     
 }

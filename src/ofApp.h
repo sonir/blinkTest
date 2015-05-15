@@ -1,5 +1,6 @@
 #pragma once
 
+#define PORT 65137
 #define SC_W 640
 #define SC_H 480
 #define SC_MARGIN_LEFT 20
@@ -10,6 +11,9 @@
 #include "ofMain.h"
 #include "sloBlink.h"
 #include "blinkTest.h"
+#include "setup.h"
+#include "Osc.h"
+class Osc;
 
 class ofApp : public ofBaseApp{
 
@@ -29,9 +33,12 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         void blinkAll();
+        void setSpecials(specials_t sp);
     
     
         vector <sloBlink> blinks;
+        Osc *osc;
+        ofxOscSender sender;
     
     
     private:

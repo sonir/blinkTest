@@ -29,6 +29,7 @@ class blinkTest: slAppManager {
         void createSpecialNode();
         void createSpecialNodes(int node_num);
         bool theSpecialNodeExits(int index);
+        void resetSpecials();
     
         int pre_rnd_index;
         bool special_nords[NODE_NUM];
